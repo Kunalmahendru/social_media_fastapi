@@ -4,6 +4,9 @@ from .database import  engine
 from .routers import post,user,auth,votes
 from .config import settings
 from fastapi.middleware.cors import CORSMiddleware
+
+
+
 # pip install uvicorn
 # uvicorn app.main:app --reload
 # inside app directory look for file name main and in main file look for the app instance of fastapi
@@ -13,7 +16,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 origin=["*"]
 
-
+ 
 app=FastAPI()
 
 app.add_middleware(
@@ -49,8 +52,8 @@ app.include_router(auth.router)
 app.include_router(votes.router)
 
 @app.get("/")
-async def root():
-    return{"message":"Welcome to my APi !!"}
+def root():
+    return{"message":"Hy! Welcome to the api testing !!"}
 
 
 

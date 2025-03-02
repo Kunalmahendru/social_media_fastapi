@@ -1,0 +1,17 @@
+name: Build and Deploy Code
+
+# on: 
+#   push:
+#     branches:
+#       -"main"
+# or we can do
+
+on: push
+jobs:
+  job1:
+    runs_on: windows-2022
+    steps:
+      - name: pulling git repo
+        uses: actions.checkout@v2
+      - name: Say hi to OScar
+      - uses: echo "Hello Oscar"

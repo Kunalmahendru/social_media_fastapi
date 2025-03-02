@@ -13,7 +13,7 @@ router=APIRouter(
 
 
 @router.get("/",response_model=List[schemas.PostOut])
-def get_posts(db: Session=Depends(get_db),limit:int=10,skip:int=0,search:Optional[str]=""):
+def get_posts(db: Session=Depends(get_db),limit:int=10,skip:int=0,curr_user:int=Depends(outh2.get_current_user),search:Optional[str]=""):
     
     
     posts = (

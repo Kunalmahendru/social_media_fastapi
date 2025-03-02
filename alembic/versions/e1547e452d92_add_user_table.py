@@ -23,7 +23,7 @@ def upgrade():
                     ,sa.Column('id',sa.Integer(),nullable=False,primary_key=True)
                     ,sa.Column('email',sa.String(),nullable=False,primary_key=False)
                     ,sa.Column('password',sa.String(),nullable=False,primary_key=False)
-                    ,sa.Column('created_at',sa.TIMESTAMP('now()'),nullable=False)
+                    ,sa.Column('created_at', sa.TIMESTAMP(), nullable=False, server_default=sa.func.now())
                     ,sa.PrimaryKeyConstraint('id')
                     ,sa.UniqueConstraint('email'))
     pass

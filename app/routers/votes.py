@@ -16,7 +16,9 @@ def vote(vote:schemas.Vote,db:Session=Depends(database.get_db),current_user:int=
     post_query=db.query(models.Post).filter(models.Post.id==vote.post_id).first()
     if post_query is None:
         raise  HTTPException(status_code=status.HTTP_404_NOT_FOUND,detail=f"post {vote.post_id} doesnt exist")
-
+    if(post_query.owner_id==current_user.id):
+        raise  HTTPException(status_code=status.HTTP_406_NOT_ACCEPTABLE,detail=f"post {vote.post_id} is yours")
+    print(post_query.owner_id,current_user.id)
     found_vote=vote_query.first()   
     if(vote.dir==1):
          if found_vote:
